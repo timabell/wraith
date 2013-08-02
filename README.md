@@ -5,6 +5,7 @@
 
 Wraith is a screenshot comparison tool, created by developers at BBC News.
 
+This version just includes custom changes done by ecometrica to test OurImpacts.
 
 ## What is it?
 
@@ -19,8 +20,14 @@ diff](http://bbc-news.github.io/wraith/images/320_diff.png)
 
 ## Requirements
 
-You'll need either PhantomJS or SlimerJS, ImageMagick & Ruby 1.9.3 or greater.
-It's up to you to decide which browser engine you want to run it against.
+On Ubuntu Lucid, you will need to apt-get the following packages:
+
+* libicu-dev
+* imagemagick
+* rake
+
+And then download the PhantomJS binary package from
+[http://phantomjs.org/](http://phantomjs.org/).
 
 On Mac OS X, the install script will install PhantomJS & ImageMagick for you, 
 assuming you have [homebrew](http://brew.sh) installed, otherwise it'll tell
@@ -58,6 +65,16 @@ paths:
   map_page: /maps
 ```
 
+## Passwords
+
+oh_snap.js will look for passwords.json containing the following structure:
+
+{
+    "ssl_username": Your SSL username,
+    "ssl_password": Your SSL password,
+    "username": The App Username,
+    "password": The App Password
+}
 
 ## Using Wraith
 

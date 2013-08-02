@@ -32,8 +32,8 @@ class Snappy
     @config['paths']
   end
 
-  def capture_page_image (url, width, file_name)
-    puts `phantomjs snap.js "#{url}" "#{width}" "#{file_name}"`
+  def capture_page_image (host, path, width, file_name)
+    puts `phantomjs --ignore-ssl-errors=true oh_snap.js "#{host}" "#{path}" "#{width}" "#{file_name}"`
   end
 
   # Support for slimerjs, uncomment code below and comment out capture_page_image option above
@@ -98,8 +98,8 @@ task :save_images do
       compare_file_name = "shots/#{label}/#{width}_#{compare_domain['label']}.png"
       base_file_name = "shots/#{label}/#{width}_#{base_domain['label']}.png"
 
-      snappy.capture_page_image compare_url, width, compare_file_name
-      snappy.capture_page_image base_url, width, base_file_name
+      snappy.capture_page_image compare_domain['host'], path, width, compare_file_name
+      snappy.capture_page_image base_domain['host'], path, width, base_file_name
     end
 
   end
