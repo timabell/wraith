@@ -14,9 +14,10 @@ console.log("Viewing " + host + path);
 
 if (! fs.isFile('passwords.json')) {
     console.log('Cannot find passwords.json file.');
-    phantom.exit();
+    var passwords = []
+} else {
+    var passwords = JSON.parse(fs.read('passwords.json'));
 }
-var passwords = JSON.parse(fs.read('passwords.json'));
 
 page.viewportSize = { width: view_port_width, height: 5000};
 page.settings = {
@@ -33,7 +34,7 @@ page.settings.userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleW
 // page.customHeaders = {
 
 //      'X-Candy-OVERRIDE': 'https://api.live.bbc.co.uk/'
- 
+
 //  };
 
 var LOGIN_PATH = "/client/login";
